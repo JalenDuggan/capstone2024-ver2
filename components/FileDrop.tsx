@@ -1,4 +1,5 @@
 import { DragEvent, useState } from "react";
+import PDFDisplay from "./PDFDisplay";
 
 export function FileDrop() {
   const [isOver, setIsOver] = useState(false);
@@ -15,7 +16,7 @@ export function FileDrop() {
     setIsOver(false);
   };
 
-  const handleDrop = (event: DragEvent<HTMLDivElement>) => {
+  const handleDrop = (event: DragEvent<HTMLDivElement>) => { //CAN CALL THIS FUNCTION TO SEND PDFS TO DATABASE JUST HAVE TO EDIT UP FUNCTIONALITY
     event.preventDefault();
     setIsOver(false);
 
@@ -49,13 +50,19 @@ export function FileDrop() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "50px",
-        width: "300px",
-        border: "1px dotted",
+        height: "700px",
+        width: "500px",
+        border: "1px",
         backgroundColor: isOver ? "lightgray" : "black",
+        marginTop:50,
+        marginLeft: 200,
+        position: "fixed",
+        zIndex: 2,
+        
       }}
     >
-      Drag and drop some files here
+      <PDFDisplay file={files.length > 0 ? files[0] : null} />
     </div>
+    
   );
 }

@@ -59,6 +59,10 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
     })
   return (
     <>
+
+<FileDrop
+      />
+      
       <div className={cn('pb-[200px] pt-4 md:pt-10 pl-[800px]', className)}>
         {messages.length ? (
           <>
@@ -68,7 +72,9 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         ) : (
           <EmptyScreen setInput={setInput} />
         )}
+        
       </div>
+      
       <ChatPanel
         id={id}
         isLoading={isLoading}
@@ -80,8 +86,7 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         setInput={setInput}
       />
 
-      <FileDrop
-      />
+      
 
       <Dialog open={previewTokenDialog} onOpenChange={setPreviewTokenDialog}>
         <DialogContent>
