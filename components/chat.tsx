@@ -22,6 +22,8 @@ import { Input } from './ui/input'
 import { toast } from 'react-hot-toast'
 import { usePathname, useRouter } from 'next/navigation'
 
+import {useDropzone} from 'react-dropzone'
+
 const IS_PREVIEW = process.env.VERCEL_ENV === 'preview'
 export interface ChatProps extends React.ComponentProps<'div'> {
   initialMessages?: Message[]
@@ -56,7 +58,30 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
         }
       }
     })
+
+//     // DROPZONE CODE 8min vid
+//     const [files, setFiles] = useState([])    
+
+//       const {getRootProps, getInputProps } = useDropzone({
+//         accept: "image/*"
+//         onDrop: (acceptedFiles) => {
+//           setFiles(
+//             acceptedFiles.map((file) => Object.assign(file, {
+//               preview: URL.createObjectURL(file)
+//             }))
+//           )
+//         }
+//       })
+
+// const images = files.map((file) => (
+//   <div key={file.name}>
+//     <div>
+//       <img src={file.preview} style={{width: "200px" }} alt="preview" />
+//   </div>
+// ))
+
   return (
+    
     <>
       <div className={cn('pb-[200px] pt-4 md:pt-10', className)}>
         {messages.length ? (
@@ -68,6 +93,14 @@ export function Chat({ id, initialMessages, className }: ChatProps) {
           <EmptyScreen setInput={setInput} />
         )}
       </div>
+      
+{/* // DROPZONE CODE 8MIN
+      <div {...getRootProps()}>
+        <input {...getInputProps()}/>
+        <p>Drop files here</p>
+      </div>
+      <div>{images}</div> */}
+
       <ChatPanel
         id={id}
         isLoading={isLoading}
