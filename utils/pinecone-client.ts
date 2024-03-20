@@ -4,9 +4,7 @@ if (!process.env.PINECONE_ENVIRONMENT || !process.env.PINECONE_API_KEY) {
   throw new Error('Pinecone environment or api key vars missing');
 }
 
-
-
-async function initPinecone() {
+async function initializePinecone() {
   try {
     const pinecone = new PineconeClient();
 
@@ -22,4 +20,11 @@ async function initPinecone() {
   }
 }
 
-export const pinecone = await initPinecone();
+// Wrap the initialization inside an async function and export it
+async function getPineconeInstance() {
+  return await initializePinecone();
+}
+
+// Export the promise returned by getPineconeInstance
+export const pinecone = getPineconeInstance();
+
