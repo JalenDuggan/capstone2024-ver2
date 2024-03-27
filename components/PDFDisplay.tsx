@@ -26,17 +26,14 @@ const PDFDisplay: React.FC<PDFDisplayProps> = ({ file }) => {
   }, [file]);
 
   return (
-    <div>
+    <div style={{ backgroundColor: "darkgrey", width: "700px", height: "800px", display: "flex", justifyContent: "center", alignItems: "center" }}>
       {pdfData ? (
         <embed
           src={pdfData}
           type="application/pdf"
-          width="700px"
-          height="800px"
-          
-          
+          width="300%"
+          height="100%"
         />
-        
       ) : (
         <p>Drag and Drop PDF</p>
       )}
